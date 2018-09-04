@@ -9,12 +9,12 @@
 <li>扩展性高，类似于接口。例如redis后面添加了quicklist。</li>
 <li>多种内部编码可以适用于不同的场景下。例如ziplist和linkedlist.</li>
 </ol>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ol>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><ol>
 <li>set  （如用于验证码的保存）</li>
 <li>setnx 用于判断是否存在keu值，不存在返回0.（如用于<a href="http://www.importnew.com/27477.html" target="_blank" rel="noopener">redis分布式锁</a>）</li>
 <li>exist</li>
 </ol>
-<h3 id="内部编码"><a href="#内部编码" class="headerlink" title="内部编码"></a>内部编码</h3><ol>
+<h4 id="内部编码"><a href="#内部编码" class="headerlink" title="内部编码"></a>内部编码</h4><ol>
 <li>int 8个字节的长整型</li>
 <li>embstr 小于等于39个字节的字符串</li>
 <li>raw 大于39个字节的字符串</li>
