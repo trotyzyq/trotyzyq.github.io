@@ -7,7 +7,7 @@
 </ol>
 <h1 id="redis数据结构"><a href="#redis数据结构" class="headerlink" title="redis数据结构"></a>redis数据结构</h1><h2 id="为什么redis数据结构底层要有多种实现"><a href="#为什么redis数据结构底层要有多种实现" class="headerlink" title="为什么redis数据结构底层要有多种实现"></a>为什么redis数据结构底层要有多种实现</h2><ol>
 <li>扩展性高，类似于接口。例如redis后面添加了quicklist。</li>
-<li>多种内部编码可以适用于不同的场景下。例如ziplist和linkedlist.<h2 id="数据结构之一-字符串"><a href="#数据结构之一-字符串" class="headerlink" title="数据结构之一:字符串"></a>数据结构之一:字符串</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3></li>
+<li>多种内部编码可以适用于不同的场景下。例如ziplist和linkedlist.<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3></li>
 <li>set  （如用于验证码的保存）</li>
 <li>setnx 用于判断是否存在keu值，不存在返回0.（如用于<a href="http://www.importnew.com/27477.html" target="_blank" rel="noopener">redis分布式锁</a>）</li>
 <li>exist</li>
