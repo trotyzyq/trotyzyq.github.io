@@ -3,32 +3,21 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2018/09/03/hello-world/"/>
-      <url>/2018/09/03/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>first</title>
-      <link href="/2018/08/31/first/"/>
-      <url>/2018/08/31/first/</url>
-      <content type="html"><![CDATA[<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> wo de </span><br><span class="line"><span class="number">2.</span> <span class="number">222</span></span><br></pre></td></tr></table></figure>]]></content>
+      <title>redis介绍与发卡</title>
+      <link href="/2018/09/04/redis%E4%BB%8B%E7%BB%8D%E4%B8%8Ekfa/"/>
+      <url>/2018/09/04/redis%E4%BB%8B%E7%BB%8D%E4%B8%8Ekfa/</url>
+      <content type="html"><![CDATA[<p>﻿# 原理</p><h2 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h2><p>见此<a href="https://blog.csdn.net/CSDN_LQR/article/details/78108587" target="_blank" rel="noopener">链接</a></p><h2 id="什么是redis"><a href="#什么是redis" class="headerlink" title="什么是redis"></a>什么是redis</h2><p>redis属于非关系型数据库，基于内存进行数据的存储。</p><h2 id="redis速度为什么快"><a href="#redis速度为什么快" class="headerlink" title="redis速度为什么快"></a>redis速度为什么快</h2><ol><li>完全基于内存的存储。</li><li>IO多路复用，能支持较大的客户端连接数。</li><li>单线程处理数据，避免了线程间的切换。对于服务端来说：锁和线程切换是<code>性能杀手</code>。</li></ol><h1 id="redis数据结构"><a href="#redis数据结构" class="headerlink" title="redis数据结构"></a>redis数据结构</h1><h2 id="为什么redis数据结构底层要有多种实现"><a href="#为什么redis数据结构底层要有多种实现" class="headerlink" title="为什么redis数据结构底层要有多种实现"></a>为什么redis数据结构底层要有多种实现</h2><ol><li>扩展性高，类似于接口。例如redis后面添加了quicklist。</li><li>多种内部编码可以适用于不同的场景下。例如ziplist和linkedlist.<h2 id="数据结构之一-字符串"><a href="#数据结构之一-字符串" class="headerlink" title="数据结构之一:字符串"></a>数据结构之一:字符串</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3></li><li>set  （如用于验证码的保存）</li><li>setnx 用于判断是否存在keu值，不存在返回0.（如用于<a href="http://www.importnew.com/27477.html" target="_blank" rel="noopener">redis分布式锁</a>）</li><li>exist</li></ol><h3 id="内部编码"><a href="#内部编码" class="headerlink" title="内部编码"></a>内部编码</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. int 8个字节的长整型</span><br><span class="line">2. embstr 小于等于39个字节的字符串</span><br><span class="line">3.<span class="built_in"> raw </span>大于39个字节的字符串</span><br></pre></td></tr></table></figure><h1 id="redis高可用性"><a href="#redis高可用性" class="headerlink" title="redis高可用性"></a>redis高可用性</h1><h2 id="redis哨兵"><a href="#redis哨兵" class="headerlink" title="redis哨兵"></a>redis哨兵</h2><h2 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h2>]]></content>
       
       <categories>
           
-          <category> hexo </category>
+          <category> redis </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Testing </tag>
-            
-            <tag> Another Tag </tag>
+            <tag> 开发 </tag>
             
         </tags>
       
